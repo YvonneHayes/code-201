@@ -7,13 +7,18 @@ function createPrompt(question) {
     return prompt(question).toLowerCase().replace('X = ', '');
 }
 
+var questionsDiv = '';
+
 // Declare variable for points
 var points = 0;
 
 // Declare variable for for order of operations question
 var question1 = 'What is one of the order of operations?';
-// document.createElement('p');
 console.log(question1);
+
+var el1 = document.createElement('p');
+el1.textContent = question1;
+el1.
 
 // Declare variable for user's order of operations response, uppercase answer
 var response1 = createPrompt(question1).toUpperCase();
