@@ -1,8 +1,4 @@
-/*! basic-algebra-quix.js */
-
-/*
- * Question 1
- **/
+/*! basic-algebra-quiz.js */
 
 // Function to add class to an element
 function addClass(target, class) {
@@ -64,6 +60,9 @@ appendContent(question4, 'question-4');
 appendContent(question5, 'question-5');
 appendContent(question6, 'question-6');
 
+/*
+ * Question 1
+ **/
 console.log(question1);
 
 // Declare variable for user's response, uppercase answer
@@ -203,7 +202,6 @@ appendContent('Answer: x = 25', 'question-5');
 console.log(question6);
 
 var response6 = createPrompt(question6);
-
 var reply6;
 
 if (response6 == '15') {
