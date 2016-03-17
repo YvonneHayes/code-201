@@ -26,6 +26,13 @@ var questions = [
       'y': 'Nah, that\'s why I\'m here at Code Fellows.',
       'n': 'Yup, one of my goals is to write clean JavaScript.'
     }
+  },
+  {
+    'question': 'Do I have 3 years of experience as a developer?',
+    'response': {
+      'y': 'Cool, you did the math when you saw my experience.',
+      'n': 'Nope, I do have about 3 years of experience if you take a look at my experience.'
+    }
   }
 ];
 
