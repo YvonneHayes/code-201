@@ -1,7 +1,5 @@
 /*! about.css */
 
-/*body {}*/
-
 h1, h2, h3, h4, h5, h6, p, ul {
   margin-top: 0;
 }
@@ -10,10 +8,40 @@ h2, h3 {
   font-size: 16px;
 }
 
+a {
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+a:before {
+  content: '';
+  background-color: #000;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 100%;
+  height: 1px;
+  -webkit-transition: right 0.2s ease-out;
+  -moz-transition: right 0.2s ease-out;
+  -ms-transition: right 0.2s ease-out;
+  -o-transition: right 0.2s ease-out;
+  transition: right 0.2s ease-out;
+}
+
+a:hover:before,
+a:focus:before,
+a:active:before {
+  right: 0;
+}
+
 .container {
-  width: 60%;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 40px 20px;
 }
 
 .header {
@@ -28,21 +56,16 @@ h2, h3 {
   border-top: 1px dotted #000;
 }
 
-.colon:after {
-  content: ':';
-}
-
 .list--inline > li {
   display: inline-block;
 }
 
 .section {
-  display: flex;
   margin: 10px 0;
 }
 
-.section__head {
-  width: 20%;
+.text--colon:after {
+  content: ':';
 }
 
 .text--center {
@@ -55,6 +78,7 @@ h2, h3 {
 
 .list--social {
   margin: 30px 0 0 0;
+  padding: 0;
 }
 
 .list--social > li {
@@ -63,4 +87,24 @@ h2, h3 {
 
 .fa {
   font-size: 26px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+
+  .section {
+    display: flex;
+  }
+
+  .section__head {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 960px;
+  }
 }

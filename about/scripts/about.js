@@ -1,26 +1,30 @@
 /*! about.js */
 
-// Define questions for the user
+// Define questions and reply to user's response
 var questions = [
   {
-    'question': 'Do I have about 3 years of experience as a developer?',
+    'question': 'Welcome! What is your name?',
+    'response': 'Hi, {replace}! I will asking you a couple of questions about me. Just simply answer with a yes or no.'
+  },
+  {
+    'question': 'Do I like to eat noodles on a boat?',
     'response': {
-      'y': 'Nice, you did your math correctly when you read my experience.',
-      'n': 'Nope, I worked at WebLively for 3 years and 2 months.'
+      'y': 'No, I don\'t eat noodles on a boat! But my favorite noodles are called "boat noodles."',
+      'n': 'Yes, where would I find a boat to eat noodles in Portland? Well, you can try boat noodles at Pok Pok. I think it\'s the best here in Portland.'
     }
   },
   {
-    'question': 'Do I know version control?',
+    'question': 'Am I an online shopper?',
     'response': {
-      'y': 'Yes, you\'re right! You saw Git under my list of skills.',
-      'n': 'No, I have a bit of experience using Git.'
+      'y': 'Correct, I like to find online deals and promos.',
+      'n': 'Nope, I like to shop for clothing online. More selection of the brands I like online.'
     }
   },
   {
     'question': 'Am I good with JavaScript?',
     'response': {
       'y': 'Nah, that\'s why I\'m here at Code Fellows.',
-      'n': 'Yup, one of my goals is to write JavaScript.'
+      'n': 'Yup, one of my goals is to write clean JavaScript.'
     }
   }
 ];
@@ -29,11 +33,13 @@ var questions = [
 function promptUser(text, response) {
   var userResponse;
 
+  // Loop until user respond with an answer
   while (!userResponse) {
-    userResponse = prompt(text).trim();
+    userResponse = prompt(text).trim(); // Take out trailing whitespaces
     console.log('User Response: ' + userResponse);
 
-    if (response) {
+    // Response is an object, it's an yes or no question
+    if (typeof response === 'object') {
       if (userResponse === 'y' || userResponse === 'yes') {
         alert(response['y']);
       } else if (userResponse === 'n' || userResponse === 'no') {
@@ -41,19 +47,18 @@ function promptUser(text, response) {
       } else {
         alert('Whoops, enter "yes" or "no" for the question.');
       }
+    } else {
+      if (userResponse.length > 0) {
+        alert(response.replace('{replace}', userResponse));
+      }
     }
   }
 
   return userResponse;
 }
 
-// Get the user's name
-var nameQuestion = 'Welcome! What is your name?';
-console.log(nameQuestion);
-var userName = promptUser(nameQuestion);
-
-alert('Hi, ' + userName + '! I will asking you a couple of questions about me. Just simply answer with a yes or no.');
-
+// Loop through the questions array of objects
 for (var i = 0; i < questions.length; i++) {
+  // Call promptUser function for user's response
   promptUser(questions[i]['question'], questions[i]['response']);
 }
