@@ -36,27 +36,37 @@ var questions = [
   }
 ];
 
+// Declare variable for response if you user doesn't enter a "yes" or "no" to question
+var defaultResponse = 'Whoops, enter "yes" or "no" for the question.';
+
 // Function to create a prompt for user's input
 function promptUser(text, response) {
   var userResponse;
 
   // Loop until user respond with an answer
   while (!userResponse) {
+    console.log('Question for User: ' + text);
     userResponse = prompt(text).trim(); // Take out trailing whitespaces
     console.log('User Response: ' + userResponse);
 
     // Response is an object, it's an yes or no question
     if (typeof response === 'object') {
       if (userResponse === 'y' || userResponse === 'yes') {
+        console.log('Response to User Response: ' + response['y']);
         alert(response['y']);
       } else if (userResponse === 'n' || userResponse === 'no') {
+        console.log('Response to User Response: ' + response['n']);
         alert(response['n']);
       } else {
-        alert('Whoops, enter "yes" or "no" for the question.');
+        console.log('Response to User Response: ' + defaultResponse);
+        alert(defaultResponse);
       }
     } else {
       if (userResponse.length > 0) {
-        alert(response.replace('{replace}', userResponse));
+        var newResponse = response.replace('{replace}', userResponse);
+
+        console.log('Response to User Response: ' + newResponse);
+        alert(newResponse);
       }
     }
   }
