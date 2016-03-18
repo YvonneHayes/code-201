@@ -1,8 +1,10 @@
 /*! about.js */
 
+// Declare variable to keep track of score
 var score = 0;
+var userName;
 
-// Define questions and reply to user's response
+// Define questions, valid answers, and responses for user
 // Response Types:
 // 1 - Response is string replacement using {replace}
 // 2 - Response is a "yes" or "no"
@@ -11,57 +13,58 @@ var score = 0;
 var questions = [
   {
     'question': 'Welcome! What is your name?',
-    'responses': 'Hi, {replace}! I will asking you a couple of questions about me. Just simply answer with a yes or no.',
+    'valid_answers': [],
+    'response': 'Hi, {replace}! I will asking you a couple of questions about me. Just simply answer with a yes or no.',
     'response_type': 1
   },
   {
     'question': 'Do I like to eat noodles on a boat?',
-    'correct_answers': ['n', 'no'],
-    'responses': {
-      'y': 'No, I don\'t eat noodles on a boat! But my favorite noodles are called "boat noodles."',
-      'n': 'Yes, where would I find a boat to eat noodles in Portland? Well, you can try boat noodles at Pok Pok. I think it\'s the best here in Portland.'
+    'valid_answers': ['n', 'no'],
+    'response': {
+      'yes': 'No, I don\'t eat noodles on a boat! But my favorite noodles are called "boat noodles."',
+      'no': 'Yes, where would I find a boat to eat noodles in Portland? Well, you can try boat noodles at Pok Pok. I think it\'s the best here in Portland.'
     },
     'response_type': 2
   },
   {
     'question': 'Am I an online shopper?',
-    'correct_answers': ['y', 'yes'],
-    'responses': {
-      'y': 'Correct, I like to find online deals and promos.',
-      'n': 'Nope, I like to shop for clothing online. More selection of the brands I like online.'
+    'valid_answers': ['y', 'yes'],
+    'response': {
+      'yes': 'Correct, I like to find online deals and promos.',
+      'no': 'Nope, I like to shop for clothing online. More selection of the brands I like online.'
     },
     'response_type': 2
   },
   {
     'question': 'Am I good with JavaScript?',
-    'correct_answers': ['n', 'no'],
-    'responses': {
-      'y': 'Nah, that\'s why I\'m here at Code Fellows.',
-      'n': 'Yup, one of my goals is to write clean JavaScript.'
+    'valid_answers': ['n', 'no'],
+    'response': {
+      'yes': 'Nah, that\'s why I\'m here at Code Fellows.',
+      'no': 'Yup, one of my goals is to write clean JavaScript.'
     },
     'response_type': 2
   },
   {
     'question': 'Do I have 3 years of experience as a developer?',
-    'correct_answers': ['y', 'yes'],
-    'responses': {
-      'y': 'Cool, you did the math when you saw my experience.',
-      'n': 'Nope, I do have about 3 years of experience if you take a look at my experience.'
+    'valid_answers': ['y', 'yes'],
+    'response': {
+      'yes': 'Cool, you did the math when you saw my experience.',
+      'no': 'Nope, I do have about 3 years of experience if you take a look at my experience.'
     },
     'response_type': 2
   },
   {
     'question': 'Which year was I born?',
-    'correct_answers': [1990],
-    'responses': {
+    'valid_answers': [1990],
+    'response': {
       1990: 'Yup, I was born in 1990.'
     },
     'response_type': 3
   },
   {
     'question': 'Can you guess a state that I have traveled to for breakdance competitions besides Oregon and Washington? Use full state name, no abbreviation.',
-    'correct_answers': ['arizona', 'california'],
-    'responses': {
+    'valid_answers': ['arizona', 'california'],
+    'response': {
       'arizona': 'Yes, I have competed in Phoenix.',
       'california': 'Yes, I have been to a couple of competions in San Diego. I was just a spectator.'
     },
@@ -72,23 +75,38 @@ var questions = [
 // Declare variable for response if you user doesn't enter a valid response
 var defaultResponse = 'Whoops, enter {replace} for the question.';
 
-// Function to create a prompt for user's input
-function promptUser(question, response, responseType) {
+// Check if string is in an array
+function inArray(string, array) {
+  var inArray = false;
+
+  for (i = 0; i < array.length; i++) {
+    if (string === array[i]) {
+      inArray = true;
+      break;
+    }
+  }
+
+  return inArray;
+}
+
+// Function to ask a user a question
+function askQuestion(questionObj) {
   var userResponse = '';
+  var newResponse = ''; // Response after user answered question
   var numericResponseCount = 4;
-  var newResponse = '';
   var keepAsking = false;
 
   // Loop until user respond with an answer
   while (keepAsking === false) {
-    console.log('Question for User: ' + question);
-    userResponse = prompt(question).trim().toLowerCase(); // Take out trailing whitespaces
+    console.log('Question for User: ' + questionObj.question);
+    userResponse = prompt(questionObj.question).trim().toLowerCase(); // Take out trailing whitespaces
     console.log('User Response: ' + userResponse);
 
-    switch (responseType) {
+    switch (questionObj.response_type) {
       case 1:
         if (userResponse.length > 0) {
-          newResponse = response.replace('{replace}', userResponse);
+          userName = userResponse;
+          newResponse = questionObj.response.replace('{replace}', userResponse);
 
           console.log('Response to User Response: ' + newResponse);
           alert(newResponse);
@@ -99,13 +117,23 @@ function promptUser(question, response, responseType) {
         break;
       case 2:
         if (userResponse === 'y' || userResponse === 'yes') {
-          console.log('Response to User Response: ' + response['y']);
-          alert(response['y']);
+          console.log('Response to User Response: ' + questionObj.response.yes);
+          alert(questionObj.response.yes);
+
+          if (inArray(userResponse, questionObj.valid_answers) === true) {
+            score++;
+            console.log('Score: ' + score);
+          }
 
           keepAsking = true;
         } else if (userResponse === 'n' || userResponse === 'no') {
-          console.log('Response to User Response: ' + response['n']);
-          alert(response['n']);
+          console.log('Response to User Response: ' + questionObj.response.no);
+          alert(questionObj.response.no);
+
+          if (inArray(userResponse, questionObj.valid_answers) === true) {
+            score++;
+            console.log('Score: ' + score);
+          }
 
           keepAsking = true;
         } else {
@@ -124,46 +152,69 @@ function promptUser(question, response, responseType) {
             console.log('Response to User Response: ' + newResponse);
             alert(newResponse);
           } else {
-            if (parseInt(response[userResponse]) === 1990) {
-              console.log('Response to User Response: ' + response[userResponse]);
-              alert(response[userResponse]);
+            if (parseInt(userResponse) === 1990) {
+              console.log('Response to User Response: ' + questionObj.response[1990]);
+              alert(questionObj.response[1990]);
 
               keepAsking = true;
+              score++;
+              console.log('Score: ' + score);
             } else {
               numericResponseCount--;
 
               if (numericResponseCount === 0) {
                 newResponse = 'Good luck next time!';
+
+                keepAsking = true;
               } else {
-                newResponse = ('Nice try, you have ' + numericResponseCount + ' more chance(s).');
+                newResponse = 'Nice try, you have ' + numericResponseCount + ' more chance';
+
+                if (numericResponseCount > 1) {
+                  newResponse += 's';
+                }
+
+                newResponse += '.';
               }
 
               console.log(newResponse);
               alert(newResponse);
-
-              if (numericResponseCount === 0) {
-                keepAsking = true;
-              }
             }
           }
         }
+
         break;
       case 4:
-        if (response[userResponse]) {
-          console.log('Response to User Response: ' + response[userResponse]);
-          alert(response[userResponse]);
-        } else {
+        if (userResponse.length > 0) {
+          if (questionObj.response[userResponse]) {
+            console.log('Response to User Response: ' + questionObj.response[userResponse]);
+            alert(questionObj.response[userResponse]);
+
+            score++;
+            console.log('Score: ' + score);
+          } else {
+            newResponse = 'You\'ll get it next time!';
+            console.log('Response to User Response: ' + newResponse);
+            alert(newResponse);
+          }
+
+          keepAsking = true;
         }
 
-        keepAsking = true;
+        break;
     }
   }
 
   return userResponse;
 }
 
-// Loop through the questions array of objects
-for (var i = 0; i < questions.length; i++) {
-  // Call promptUser function for user's response
-  promptUser(questions[i]['question'], questions[i]['response'], questions[i]['response_type']);
+// After HTML loads loop through questions array and call askQuestion for user's response
+window.onload = function () {
+  for (var i = 0; i < questions.length; i++) {
+    askQuestion(questions[i]);
+  }
+
+  // Let user know score
+  var scoreResponse = 'You got ' + score + ' out of 6 questions correct, ' + userName + '.';
+  alert(scoreResponse);
+  console.log('Response to User: ' + scoreResponse);
 }
