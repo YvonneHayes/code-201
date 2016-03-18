@@ -20,6 +20,10 @@ h2, h3 {
   font-size: 16px;
 }
 
+nav ul {
+  padding:0;
+}
+
 a {
   color: #435159;
   text-decoration: none;
@@ -76,6 +80,10 @@ a:active:before {
 
 .section {
   padding: 15px 0;
+}
+
+.section__body--game p:first-child {
+  margin-top:0;
 }
 
 .section__body p:last-child {
