@@ -116,8 +116,17 @@ a:active:before {
   margin: 0 5px;
 }
 
-.list--social > li > a {
+.list--social > li > a, .list--nav > li > a {
   color: #fff;
+}
+
+.list--nav > li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.list--nav {
+  text-align: center;
 }
 
 .margin-t--0 {
