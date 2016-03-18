@@ -20,6 +20,10 @@ h2, h3 {
   font-size: 16px;
 }
 
+nav ul {
+  padding:0;
+}
+
 a {
   color: #435159;
   text-decoration: none;
@@ -78,6 +82,10 @@ a:active:before {
   padding: 15px 0;
 }
 
+.section__body--game p:first-child {
+  margin-top:0;
+}
+
 .section__body p:last-child {
   margin: 0;
 }
@@ -116,8 +124,17 @@ a:active:before {
   margin: 0 5px;
 }
 
-.list--social > li > a {
+.list--social > li > a, .list--nav > li > a {
   color: #fff;
+}
+
+.list--nav > li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.list--nav {
+  text-align: center;
 }
 
 .margin-t--0 {

@@ -89,6 +89,20 @@ function inArray(string, array) {
   return inArray;
 }
 
+function appendContent(content, target) {
+  // Look for an element with the provided ID
+  var elTarget = document.getElementById(target);
+
+  // Create a <p> element
+  var elContent = document.createElement('p');
+
+  // Set text for <p> element
+  elContent.textContent = content;
+
+  // Append the <p> element to the targeted element provided
+  elTarget.appendChild(elContent);
+}
+
 // Function to ask a user a question
 function askQuestion(questionObj) {
   var userResponse = '';
@@ -98,9 +112,9 @@ function askQuestion(questionObj) {
 
   // Loop until user respond with an answer
   while (keepAsking === false) {
-    console.log('Question for User: ' + questionObj.question);
+    appendContent ('Question for User: ' +  questionObj.question, 'game-content' );
     userResponse = prompt(questionObj.question).trim().toLowerCase(); // Take out trailing whitespaces
-    console.log('User Response: ' + userResponse);
+    appendContent ('User Response: ' + userResponse, 'game-content' );
 
     switch (questionObj.response_type) {
       case 1:
@@ -108,7 +122,7 @@ function askQuestion(questionObj) {
           userName = userResponse;
           newResponse = questionObj.response.replace('{replace}', userResponse);
 
-          console.log('Response to User Response: ' + newResponse);
+          appendContent('Response to User Response: ' + newResponse, 'game-content');
           alert(newResponse);
 
           keepAsking = true;
@@ -117,29 +131,29 @@ function askQuestion(questionObj) {
         break;
       case 2:
         if (userResponse === 'y' || userResponse === 'yes') {
-          console.log('Response to User Response: ' + questionObj.response.yes);
+          appendContent('Response to User Response: ' + questionObj.response.yes, 'game-content');
           alert(questionObj.response.yes);
 
           if (inArray(userResponse, questionObj.valid_answers) === true) {
             score++;
-            console.log('Score: ' + score);
+            appendContent('Score: ' + score, 'game-content');
           }
 
           keepAsking = true;
         } else if (userResponse === 'n' || userResponse === 'no') {
-          console.log('Response to User Response: ' + questionObj.response.no);
+          appendContent('Response to User Response: ' + questionObj.response.no, 'game-content');
           alert(questionObj.response.no);
 
           if (inArray(userResponse, questionObj.valid_answers) === true) {
             score++;
-            console.log('Score: ' + score);
+            appendContent('Score: ' + score, 'game-content');
           }
 
           keepAsking = true;
         } else {
           newResponse = defaultResponse.replace('{replace}', '"yes" or "no"');
 
-          console.log('Response to User Response: ' + newResponse);
+          appendContent('Response to User Response: ' + newResponse, 'game-content');
           alert(newResponse);
         }
 
@@ -149,16 +163,16 @@ function askQuestion(questionObj) {
           if (!userResponse || isNaN(userResponse)) {
             newResponse = defaultResponse.replace('{replace}', 'a number');
 
-            console.log('Response to User Response: ' + newResponse);
+            appendContent('Response to User Response: ' + newResponse, 'game-content');
             alert(newResponse);
           } else {
             if (parseInt(userResponse) === 1990) {
-              console.log('Response to User Response: ' + questionObj.response[1990]);
+              appendContent('Response to User Response: ' + questionObj.response[1990], 'game-content');
               alert(questionObj.response[1990]);
 
               keepAsking = true;
               score++;
-              console.log('Score: ' + score);
+              appendContent('Score: ' + score, 'game-content');
             } else {
               numericResponseCount--;
 
@@ -176,7 +190,7 @@ function askQuestion(questionObj) {
                 newResponse += '.';
               }
 
-              console.log(newResponse);
+              appendContent(newResponse, 'game-content');
               alert(newResponse);
             }
           }
@@ -186,14 +200,14 @@ function askQuestion(questionObj) {
       case 4:
         if (userResponse.length > 0) {
           if (questionObj.response[userResponse]) {
-            console.log('Response to User Response: ' + questionObj.response[userResponse]);
+            appendContent('Response to User Response: ' + questionObj.response[userResponse], 'game-content');
             alert(questionObj.response[userResponse]);
 
             score++;
-            console.log('Score: ' + score);
+            appendContent('Score: ' + score, 'game-content');
           } else {
             newResponse = 'You\'ll get it next time!';
-            console.log('Response to User Response: ' + newResponse);
+            appendContent('Response to User Response: ' + newResponse, 'game-content');
             alert(newResponse);
           }
 
@@ -216,5 +230,5 @@ window.onload = function () {
   // Let user know score
   var scoreResponse = 'You got ' + score + ' out of 6 questions correct, ' + userName + '.';
   alert(scoreResponse);
-  console.log('Response to User: ' + scoreResponse);
+  appendContent('Response to User: ' + scoreResponse, 'game-content');
 }
