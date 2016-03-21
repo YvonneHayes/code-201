@@ -1,16 +1,12 @@
 var assert = require('assert');
 var compute = require('../scripts/compute.js');
 
-describe('My first test', function() {
-  it('should check first question', function() {
-    assert.deepEqual(compute.getQuestion(0), 'first');
+describe('Problem 1: Sum of two numbers', function() {
+  it('should add 1 and 6 to get 7', function() {
+    assert(7 == compute.sum(1, 6));
   });
 
-  it('should check third question', function() {
-    assert.deepEqual(compute.getQuestion(2), 'third');
+  it('should add 10 and 78 not get 68', function() {
+    assert(68 != compute.sum(10, 78));
   });
-
-  it('should increment 0 to get 5', function() { assert(5 == compute.addFive(0)); });
-  it('should increment 4 to get 9', function() { assert(9 == compute.addFive(4)); });
-  it('should increment -1008 to get -1003', function() { assert(compute.addFive(-1008) == -1003); });
 });
