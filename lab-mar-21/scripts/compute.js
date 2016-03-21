@@ -34,3 +34,20 @@ function sumAndProduct(num1, num2, num3) {
 }
 
 exports.sumAndProduct = sumAndProduct;
+
+// Problem 4
+function sumArray(arr) {
+  // console.table(arr);
+
+  var sum = 0;
+
+  for (i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+
+  console.log(arr.join(', ') + ' was passed in as an array of numbers, and ' + sum + ' is their sum.');
+
+  return sum;
+}
+
+exports.sumArray = sumArray;
