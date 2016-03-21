@@ -20,3 +20,23 @@ describe('Problem 2: product of two numbers', function () {
     assert(21 != compute.multiply(7, 4));
   });
 });
+
+describe('Problem 3: sum and product of three numbers', function () {
+  var result = compute.sumAndMultiply(1, 2, 3);
+
+  it('should add 1, 2, and 3 to get 6', function () {
+    assert(6 == result[0]);
+  });
+
+  it('should add 1, 2, and 3 to not get 9', function () {
+    assert(9 != result[0]);
+  });
+
+  it('should multiply 1, 2, and 3 to get 6', function () {
+    assert(6 == result[1]);
+  });
+
+  it('should multiply 1, 2, and 3 to not get 12', function () {
+    assert(12 != result[1]);
+  });
+});
