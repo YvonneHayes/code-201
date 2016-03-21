@@ -22,7 +22,7 @@ describe('Problem 2: product of two numbers', function () {
 });
 
 describe('Problem 3: sum and product of three numbers', function () {
-  var result = compute.sumAndProduct(1, 2, 3);
+  var result = compute.sumAndMultiply(1, 2, 3);
 
   it('should add 1, 2, 3 and equal 6', function () {
     assert(6 == result[0]);
@@ -48,5 +48,15 @@ describe('Problem 4: sum of an array', function () {
 
   it('should add 3, 4, 5 and not equal 9', function () {
     assert(2 != compute.sumArray([3, 4, 5]));
+  });
+});
+
+describe('Problem 5: product of an array', function () {
+  it('should add 5, 6, 7 and equal 210', function () {
+    assert(210 == compute.multiplyArray([5, 6, 7]));
+  });
+
+  it('should add 7, 8, 9 and not equal 502', function () {
+    assert(502 != compute.multiplyArray([7, 8, 9]));
   });
 });
