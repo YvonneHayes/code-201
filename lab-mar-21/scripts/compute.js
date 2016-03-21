@@ -23,7 +23,7 @@ function multiplyNum(num1, num2) {
 exports.multiplyNum = multiplyNum;
 
 // Problem 3
-function sumAndProduct(num1, num2, num3) {
+function sumAndMultiply(num1, num2, num3) {
   var sum = addNum(addNum(num1, num2), num3);
   console.log(num1 + ' and ' + num2 + ' and ' + num3 + ' sum to ' + sum + '.');
 
@@ -33,7 +33,7 @@ function sumAndProduct(num1, num2, num3) {
   return [sum, product];
 }
 
-exports.sumAndProduct = sumAndProduct;
+exports.sumAndMultiply = sumAndMultiply;
 
 // Problem 4
 function sumArray(arr) {
@@ -51,3 +51,20 @@ function sumArray(arr) {
 }
 
 exports.sumArray = sumArray;
+
+// Problem 5
+function multiplyArray(arr) {
+  // console.table(arr);
+
+  var product = 1;
+
+  for (i = 0; i < arr.length; i++) {
+    product *= arr[i];
+  }
+
+  console.log('The numbers ' + arr.join(', ') + ' have a product of ' + product + '.');
+
+  return product;
+}
+
+exports.multiplyArray = multiplyArray;
