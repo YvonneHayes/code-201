@@ -1,36 +1,36 @@
 /*! compute.js */
 
 // Problem 1
-function addNum(num1, num2) {
-  var sum = num1 + num2;
+function sum(num1, num2) {
+  var sumResult = num1 + num2;
 
-  // console.log('The sum of ' + num1 + ' and ' + num2 + ' is ' + sum + '.');
+  // console.log('The sum of ' + num1 + ' and ' + num2 + ' is ' + sumResult + '.');
 
-  return sum;
+  return sumResult;
 }
 
-exports.addNum = addNum;
+exports.sum = sum;
 
 // Problem 2
-function multiplyNum(num1, num2) {
-  var product = num1 * num2;
+function multiply(num1, num2) {
+  var multiplyResult = num1 * num2;
 
-  // console.log('The product of ' + num1 + ' and ' + num2 + ' is ' + product + '.');
+  // console.log('The product of ' + num1 + ' and ' + num2 + ' is ' + multiplyResult + '.');
 
-  return product;
+  return multiplyResult;
 }
 
-exports.multiplyNum = multiplyNum;
+exports.multiply = multiply;
 
 // Problem 3
 function sumAndMultiply(num1, num2, num3) {
-  var sum = addNum(addNum(num1, num2), num3);
-  console.log(num1 + ' and ' + num2 + ' and ' + num3 + ' sum to ' + sum + '.');
+  var sumResult = sum(sum(num1, num2), num3);
+  // console.log(num1 + ' and ' + num2 + ' and ' + num3 + ' sum to ' + sumResult + '.');
 
-  var product = multiplyNum(multiplyNum(num1, num2), num3);
-  console.log('The numbers ' + num1 + ' and ' + num2 + ' and ' + num3 + ' have a product of ' + product + '.');
+  var multiplyResult = multiply(multiply(num1, num2), num3);
+  // console.log('The numbers ' + num1 + ' and ' + num2 + ' and ' + num3 + ' have a product of ' + multiplyResult + '.');
 
-  return [sum, product];
+  return [sumResult, multiplyResult];
 }
 
 exports.sumAndMultiply = sumAndMultiply;
@@ -39,15 +39,15 @@ exports.sumAndMultiply = sumAndMultiply;
 function sumArray(arr) {
   // console.table(arr);
 
-  var sum = 0;
+  var sumResult = 0;
 
-  for (i = 0; i < arr.length; i++) {
-    sum += arr[i];
+  for (var i = 0; i < arr.length; i++) {
+    sumResult += arr[i];
   }
 
-  console.log(arr.join(', ') + ' was passed in as an array of numbers, and ' + sum + ' is their sum.');
+  // console.log(arr.join(', ') + ' was passed in as an array of numbers, and ' + sumResult + ' is their sum.');
 
-  return sum;
+  return sumResult;
 }
 
 exports.sumArray = sumArray;
@@ -56,15 +56,15 @@ exports.sumArray = sumArray;
 function multiplyArray(arr) {
   // console.table(arr);
 
-  var product = 1;
+  var multiplyResult = 1;
 
-  for (i = 0; i < arr.length; i++) {
-    product *= arr[i];
+  for (var i = 0; i < arr.length; i++) {
+    multiplyResult *= arr[i];
   }
 
-  console.log('The numbers ' + arr.join(', ') + ' have a product of ' + product + '.');
+  // console.log('The numbers ' + arr.join(', ') + ' have a product of ' + multiplyResult + '.');
 
-  return product;
+  return multiplyResult;
 }
 
 exports.multiplyArray = multiplyArray;
