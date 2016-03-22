@@ -1,3 +1,5 @@
+//Nice organization!
+
 /*! compute.js */
 
 // Problem 1
