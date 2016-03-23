@@ -1,24 +1,39 @@
 var assert = require('assert');
-var compute = require('../js/compute.js');
+var compute = require('../scripts/compute.js');
 
-describe('My first test', function() {
-  it('should check first question', function() {
-    assert.deepEqual(compute.getQuestion(0), 'first');
-  });
+// convertNumberToDay()
+// describe('Convert number to a day name', function() {
+//   it('should convert 1 to "Monday"', function() {
+//     assert(compute.convertNumberToDay(1) == 'Monday');
+//   });
+//
+//   it('', function() {
+//     assert(compute.convertNumberToDay(2));
+//   });
+// });
 
-  it('should check third question', function() {
-    assert.deepEqual(compute.getQuestion(2), 'third');
-  });
+// convertNumberTo12Hour()
+// describe('Convert number to a 12 hour clock format', function() {
+//   it('should convert 2 to "2:00 AM"', function() {
+//     assert(compute.convertNumberTo12Hour(2) == '2:00 AM');
+//   });
+//
+//   it('should bring back an error message with an argument of 28.', function() {
+//     assert(compute.convertNumberTo12Hour() == '');
+//   });
+// });
 
-  it('should increment 0 to get 5', function() {
-    assert(5 == compute.addFive(0));
-  });
-
-  it('should increment 4 to get 9', function() {
-    assert(9 == compute.addFive(4));
-  });
-
-  it('should increment -1008 to get -1003', function() {
-    assert(compute.addFive(-1008) == -1003);
-  });
-});
+// generateRandomNumber()
+// describe('Generate a random number from a given min and max number', function() {
+//   it('should generate a random number from 0-10.', function() {
+//     var randomNumber = compute.generateRandomNumber(0, 10);
+//
+//     assert(randomNumber >= 0 && randomNumber <= 10);
+//   });
+//
+//   it('should not generate a random number from 20-50.', function() {
+//     var randomNumber = compute.generateRandomNumber(5, 19);
+//
+//     assert(randomNumber >= 5 && randomNumber <= 19);
+//   });
+// });
