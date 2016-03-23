@@ -48,6 +48,10 @@ exports.generateRandomNumber = generateRandomNumber;
 function createEl(elName, elText, elAttribute) {
   var el = document.createElement(elName);
 
+  if (elText === 0) {
+    elText = elText.toString();
+  }
+
   if (elText) {
     el.textContent = elText;
   }

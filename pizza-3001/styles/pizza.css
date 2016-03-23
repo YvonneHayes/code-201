@@ -1,1 +1,5 @@
 /*! pizza.css */
+
+td[rowspan] {
+  background-color: red;
+}
