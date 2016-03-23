@@ -175,13 +175,20 @@ document.addEventListener('DOMContentLoaded', function() {
           elTr.appendChild(elTdPizzasSold);
 
           // Delivery Runs
+          console.log(minMax);
+
           var deliveryRuns = generateRandomNumber(minMax.deliveryMin, minMax.deliveryMax);
+
+          while (deliveryRuns > pizzasSold) {
+            deliveryRuns = generateRandomNumber(minMax.deliveryMin, minMax.deliveryMax);
+          }
+
           var elTdDeliveryRuns = createEl('td', deliveryRuns);
           elTr.appendChild(elTdDeliveryRuns);
 
           // Drivers Recommended
-          var driversRecommended = getDrivers(pizzasSold, deliveryRuns);
-          var elTdDriversRecommended = createEl('td', pizzasSold);
+          var driversRecommended = getDrivers(deliveryRuns);
+          var elTdDriversRecommended = createEl('td', driversRecommended);
           elTr.appendChild(elTdDriversRecommended);
 
           time++;

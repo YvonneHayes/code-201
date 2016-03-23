@@ -95,8 +95,8 @@ function getMinAndMax(time) {
 
 exports.getMinAndMax = getMinAndMax;
 
-function getDrivers(pizzasSold, deliveryRuns) {
-  return Math.ceil(pizzasSold / 3);
+function getDrivers(deliveryRuns) {
+  return Math.ceil(deliveryRuns / 3);
 }
 
 exports.getDrivers = getDrivers;
