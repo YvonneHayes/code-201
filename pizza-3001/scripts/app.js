@@ -1,91 +1,32 @@
-var exports = {};
-
-var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-var storeBeaverton = {
-  locationName: 'Beaverton',
-  dayHours: [
-    { timeStart: 8, timeEnd: 17 },
-    { timeStart: 8, timeEnd: 17 },
-    { timeStart: 8, timeEnd: 17 },
-    { timeStart: 8, timeEnd: 17 },
-    { timeStart: 8, timeEnd: 17 },
-    { timeStart: 0, timeEnd: 0 },
-    { timeStart: 0, timeEnd: 0 }
-  ]
-};
-
-var storeHillsboro = {
-  locationName: 'Hillsboro',
-  dayHours: [
-    { timeStart: 10, timeEnd: 23 },
-    { timeStart: 10, timeEnd: 23 },
-    { timeStart: 10, timeEnd: 23 },
-    { timeStart: 10, timeEnd: 23 },
-    { timeStart: 10, timeEnd: 23 },
-    { timeStart: 0, timeEnd: 0 },
-    { timeStart: 0, timeEnd: 0 }
-  ]
-};
-
-var storeDowntown = {
-  locationName: 'Downtown',
-  dayHours: [
-    { timeStart: 8, timeEnd: 15 },
-    { timeStart: 8, timeEnd: 15 },
-    { timeStart: 8, timeEnd: 15 },
-    { timeStart: 8, timeEnd: 15 },
-    { timeStart: 8, timeEnd: 15 },
-    { timeStart: 0, timeEnd: 0 },
-    { timeStart: 0, timeEnd: 0 }
-  ]
-};
-
-var storeNorthEast = {
-  locationName: 'NorthEast',
-  dayHours: [
-    { timeStart: 8, timeEnd: 14 },
-    { timeStart: 8, timeEnd: 14 },
-    { timeStart: 8, timeEnd: 14 },
-    { timeStart: 8, timeEnd: 14 },
-    { timeStart: 8, timeEnd: 14 },
-    { timeStart: 0, timeEnd: 0 },
-    { timeStart: 0, timeEnd: 0 }
-  ]
-};
-
-var storeClackamas = {
-  locationName: 'Clackamas',
-  dayHours: [
-    { timeStart: 0, timeEnd: 0 },
-    { timeStart: 9, timeEnd: 18 },
-    { timeStart: 9, timeEnd: 18 },
-    { timeStart: 9, timeEnd: 18 },
-    { timeStart: 9, timeEnd: 18 },
-    { timeStart: 9, timeEnd: 15 },
-    { timeStart: 0, timeEnd: 0 }
-  ]
-};
-
-var storeAirport = {
-  locationName: 'Airport',
-  dayHours: [
-    { timeStart: 0, timeEnd: 0 },
-    { timeStart: 0, timeEnd: 0 },
-    { timeStart: 10, timeEnd: 21 },
-    { timeStart: 10, timeEnd: 21 },
-    { timeStart: 10, timeEnd: 21 },
-    { timeStart: 0, timeEnd: 0 },
-    { timeStart: 0, timeEnd: 0 }
-  ]
-};
-
 document.addEventListener('DOMContentLoaded', function() {
+  function Store(locationName, dayHours, minMax) {
+    this.locationName = locationName;
+    this.dayHours = dayHours;
+    this.minMax = minMax;
+  }
+
+  var storeBeaverton = new Store('Beaverton', beavertonDayHours, beavertonMinMax);
+  console.log('Beaverton Object', storeBeaverton);
+
+  var storeHillsboro = new Store('Hillsboro', hillsboroDayHours, hillsboroMinMax);
+  console.log('Hillsboro object: ' + storeHillsboro);
+
+  var storeDowntown = new Store('Downtown', downtownDayHours, downtownMinMax);
+  console.log('Downtown Object', storeDowntown);
+
+  var storeNorthEast = new Store('North East', northEastHours, northEastMinMax);
+  console.log('North East Object', storeNorthEast);
+
+  var storeClackamas = new Store('Clackamas', clackamasHours, clackamasMinMax);
+  console.log('Clackamas Object', storeClackamas);
+
+  var storeAirport = new Store('PDX Airport', airportHours, airportMinMax);
+  console.log('PDX Airport Object', storeAirport);
+
   var currentPage = document.body.className.split(' ')[1];
   var elMain = document.getElementsByTagName('main')[0];
   var elHome = document.getElementById('home');
   var elSales = document.getElementById('sales-data');
-  var textTitle = 'Pizza 3001';
 
   function convertNumberTo12Hour(number) {
     if (number <= 0 || number > 24) {
