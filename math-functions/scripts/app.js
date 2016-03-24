@@ -1,3 +1,5 @@
+//Way different then mine nice use of objects!
+
 /*! app.js */
 
 var exports = {};

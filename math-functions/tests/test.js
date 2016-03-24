@@ -1,3 +1,4 @@
+//Cleanly written javascript sir!
 /*! test.js */
 
 var assert = require('assert');
