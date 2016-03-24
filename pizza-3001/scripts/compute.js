@@ -1,40 +1,3 @@
-// function convertNumberToDay(number) {
-//   var days = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-//
-//   if (number != 0 && days[number]) {
-//     return days[number];
-//   }
-//
-//   return 'Enter a number between 0 and 8';
-// }
-//
-// exports.convertNumberToDay = convertNumberToDay;
-
-function convertNumberTo12Hour(number) {
-  if (number <= 0 || number > 24) {
-    return 'Enter a number between 0 and 25';
-  }
-
-  var string = '';
-  var newNumber = number;
-
-  if (number > 12) {
-    newNumber = number - 12;
-  }
-
-  string += newNumber + ':00 ';
-
-  if (number == 24 || number < 12) {
-    string += 'AM';
-  } else {
-    string += 'PM';
-  }
-
-  return string;
-}
-
-exports.convertNumberTo12Hour = convertNumberTo12Hour;
-
 function generateRandomNumber(minNumber, maxNumber) {
   var randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
 
@@ -42,8 +5,6 @@ function generateRandomNumber(minNumber, maxNumber) {
 
   return randomNumber;
 }
-
-exports.generateRandomNumber = generateRandomNumber;
 
 function createEl(elName, elText, elAttribute) {
   var el = document.createElement(elName);
@@ -62,8 +23,6 @@ function createEl(elName, elText, elAttribute) {
 
   return el;
 }
-
-exports.createEl = createEl;
 
 function getMinAndMax(time) {
   switch (true) {
@@ -97,10 +56,66 @@ function getMinAndMax(time) {
   }
 }
 
-exports.getMinAndMax = getMinAndMax;
-
 function getDrivers(deliveryRuns) {
   return Math.ceil(deliveryRuns / 3);
 }
 
-exports.getDrivers = getDrivers;
+function addClass(idName, classNameAdd) {
+  var el = document.getElementById(idName);
+  var classNames = el.className.split(' ');
+  var newClassNames = [];
+
+  for (var i = 0; i < classNames.length; i++) {
+    if (classNames[i] !== classNameAdd) {
+      newClassNames.push(classNames[i]);
+    }
+  }
+
+  newClassNames.push(classNameAdd);
+
+  el.className = newClassNames.join(' ');
+
+  return newClassNames;
+}
+
+exports.addClass = addClass;
+
+function removeClass(idName, classNameRemove) {
+  var el = document.getElementById(idName);
+  var classNames = el.className.split(' ');
+  var newClassNames = [];
+
+  for (var i = 0; i < classNames.length; i++) {
+    if (classNames[i] !== classNameRemove) {
+      newClassNames.push(classNames[i]);
+    }
+  }
+
+  el.className = newClassNames.join(' ');
+
+  return newClassNames;
+}
+
+exports.removeClass = removeClass;
+
+function createTable() {
+  var elTable = createEl('table');
+  var elThead = createEl('thead');
+  var elTbody = createEl('tbody');
+
+  elTable.appendChild(elThead);
+  elTable.appendChild(elTbody);
+
+  return elTable;
+}
+
+function createTr(textArr) {
+  var elTr = createEl('tr');
+
+  for (var i = 0; i < textArr.length; i++) {
+    var elTh = createEl('th', textArr.i);
+    elTr.appendChild(elTh);
+  }
+
+  return elTr;
+}

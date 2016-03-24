@@ -3,3 +3,11 @@
 td[rowspan] {
   background-color: red;
 }
+
+.content {
+  display: none;
+}
+
+.show {
+  display: block;
+}
