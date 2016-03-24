@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+  var elNavSite = document.getElementById('nav-site');
+  var elHome = document.getElementById('content-home');
+  var elSales = document.getElementById('content-sales-data');
+
   function Store(locationName, dayHours, minMax) {
     this.locationName = locationName;
     this.dayHours = dayHours;
@@ -9,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('Beaverton Object', storeBeaverton);
 
   var storeHillsboro = new Store('Hillsboro', hillsboroDayHours, hillsboroMinMax);
-  console.log('Hillsboro object: ' + storeHillsboro);
+  console.log('Hillsboro object: ', storeHillsboro);
 
   var storeDowntown = new Store('Downtown', downtownDayHours, downtownMinMax);
   console.log('Downtown Object', storeDowntown);
@@ -22,11 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var storeAirport = new Store('PDX Airport', airportHours, airportMinMax);
   console.log('PDX Airport Object', storeAirport);
-
-  var currentPage = document.body.className.split(' ')[1];
-  var elMain = document.getElementsByTagName('main')[0];
-  var elHome = document.getElementById('home');
-  var elSales = document.getElementById('sales-data');
 
   function convertNumberTo12Hour(number) {
     if (number <= 0 || number > 24) {
@@ -63,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var el = document.createElement(elName);
 
     if (elText === 0) {
-      console.log(elText);
       elText = elText.toString();
     }
 
@@ -143,28 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
     el.className = newClassNames.join(' ');
 
     return newClassNames;
-  }
-
-  function createTable() {
-    var elTable = createEl('table');
-    var elThead = createEl('thead');
-    var elTbody = createEl('tbody');
-
-    elTable.appendChild(elThead);
-    elTable.appendChild(elTbody);
-
-    return elTable;
-  }
-
-  function createTr(textArr) {
-    var elTr = createEl('tr');
-
-    for (var i = 0; i < textArr.length; i++) {
-      var elTh = createEl('th', textArr.i);
-      elTr.appendChild(elTh);
-    }
-
-    return elTr;
   }
 
   function createLocationTable(store) {
@@ -247,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function() {
             value: hoursLength
           };
           var elSalesTbodyTdDay = createEl('td', dayName, elSalesTbodyTdDayAttribute);
-          console.log(elSalesTbodyTdDay);
 
           elSalesTbodyTr.appendChild(elSalesTbodyTdDay);
         }
@@ -306,14 +281,12 @@ document.addEventListener('DOMContentLoaded', function() {
   createLocationTable(storeClackamas);
   createLocationTable(storeAirport);
 
-  var navSite = document.getElementById('nav-site');
-
-  navSite.addEventListener('click', function (e) {
-    var idName = e.target.getAttribute('href').replace('#', '');
+  elNavSite.addEventListener('click', function (e) {
+    var page = e.target.getAttribute('href').replace('#', '');
     var elTitle = document.getElementsByTagName('title')[0];
     var elH1 = document.getElementsByTagName('h1')[0];
 
-    switch (idName) {
+    switch (page) {
       case 'home':
         // Update title and h1 tags
         elTitle.textContent = textTitle;
