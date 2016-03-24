@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var el = document.createElement(elName);
 
     if (elText === 0) {
+      console.log(elText);
       elText = elText.toString();
     }
 
@@ -230,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var pizzasSoldWeek = 0;
 
     var elHomeH2 = createEl('h2', store.locationName);
-    var elHomeTable = createEl('table');
+    var elHomeTable = createEl('table', '', {name: 'class', value: 'u-full-width'});
     var elHomeThead = createEl('thead');
     var elHomeTheadTr = createEl('tr');
     var elHomeTheadThDay = createEl('th', 'Day');
@@ -246,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elHomeTheadTr.appendChild(elHomeTheadThHours);
 
     var elH2 = createEl('h2', store.locationName);
-    var elSalesTable = createEl('table');
+    var elSalesTable = createEl('table', '', {name: 'class', value: 'u-full-width'});
     var elSalesThead = createEl('thead');
     var elSalesTheadTr = createEl('tr');
     var elSalesTheadThDay = createEl('th', 'Day');
@@ -305,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
             value: hoursLength
           };
           var elSalesTbodyTdDay = createEl('td', dayName, elSalesTbodyTdDayAttribute);
+          console.log(elSalesTbodyTdDay);
 
           elSalesTbodyTr.appendChild(elSalesTbodyTdDay);
         }
@@ -372,19 +374,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     switch (idName) {
       case 'home':
+        // Update title and h1 tags
         elTitle.textContent = textTitle;
         elH1.textContent = textTitle;
 
+        // Switch background image by class
+        addClass('bg-image', 'bg-image--01');
+        removeClass('bg-image', 'bg-image--02');
+
+        // Show content for sales
         addClass('home', 'show');
         removeClass('sales-data', 'show');
 
         break;
       case 'sales-data':
+        // Update title and h1 tags
         titleText = 'Sales Data';
-
         elTitle.textContent = titleText;
         elH1.textContent = titleText;
 
+        // Switch background image by class
+        addClass('bg-image', 'bg-image--02');
+        removeClass('bg-image', 'bg-image--01');
+
+        // Show content for sales
         addClass('sales-data', 'show');
         removeClass('home', 'show');
 

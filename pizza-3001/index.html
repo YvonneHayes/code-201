@@ -3,33 +3,36 @@
   <head>
     <meta charset="utf-8">
     <title>Pizza 3001</title>
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:500|Lora:400"> -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:500|Lora:400">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <link rel="stylesheet" href="styles/pizza.css">
   </head>
   <body>
     <header>
-      <h1>Pizza 3001</h1>
+      <div class="bg-image bg-image--01" id="bg-image">
+        <h1>Pizza 3001</h1>
+      </div>
       <nav id="nav-site">
-        <ul>
-          <li class="active">
-            <a href="#home">Home</a>
-          </li>
-          <li>
-            <a href="#sales-data">Sales Data</a>
-          </li>
-        </ul>
+        <div class="container">
+          <ul>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#sales-data">Sales Data</a>
+            </li>
+          </ul>
+        </div>
       </nav>
+      </div>
     </header>
     <main>
-      <div class="content content--home show" id="home"></div>
-      <div class="content content--sales-data" id="sales-data"></div>
+      <div class="container">
+        <div class="content content--home show" id="home"></div>
+        <div class="content content--sales-data" id="sales-data"></div>
+      </div>
     </main>
-    <footer>
-      <small>Copyright &amp; 2016 Pizza 3001. All rights reserved.</small>
-    </footer>
     <script src="scripts/app.js"></script>
-    <script src="scripts/compute.js"></script>
   </body>
 </html>
