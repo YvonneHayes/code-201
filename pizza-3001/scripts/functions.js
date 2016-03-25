@@ -1,4 +1,5 @@
 function convertNumberTo12Hour(number) {
+  console.log(number);
   if (number <= 0 || number > 24) {
     return 'Enter a number between 0 and 25';
   }

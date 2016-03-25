@@ -247,4 +247,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
     e.preventDefault();
   }, false);
+
+  //Create Event Listener
+
+var Button = document.getElementById('Button');
+Button.addEventListener('click', function(){
+  var inputLocationName = document.getElementById('locationName').value;
+  var inputTimeStart = document.getElementById('timeStart').value;
+  var inputTimeEnd = document.getElementById('timeEnd').value;
+  var inputMinPizza = document.getElementById('minPizza').value;
+  var inputMaxPizza = document.getElementById('maxPizza').value;
+  var inputMinDelivery = document.getElementById('minDelivery').value;
+  var inputMaxDelivery = document.getElementById('maxDelivery').value;
+  // var storeBeaverton = new Store('Beaverton', beavertonDayHours, beavertonMinMax);
+  // console.log('Beaverton Object', storeBeaverton);
+
+  var splitTimeStart = inputTimeStart.split(",");
+  var splitTimeEnd = inputTimeEnd.split(",");
+  var splitMinPizza = inputMinPizza.split(",");
+  var splitMaxPizza = inputMaxPizza.split(",");
+  var splitMinDelivery = inputMinDelivery.split(",");
+  var splitMaxDelivery = inputMaxDelivery.split(",");
+  var Hours = [];
+  var MinMax =[];
+
+  console.log(splitTimeStart);
+
+  for (var i = 0; i < splitTimeStart.length; i++) {
+    Hours.push({
+      timeStart: splitTimeStart[i],
+      timeEnd: splitTimeEnd[i]
+    });
+  }
+  for (var i = 0; i < splitMinPizza.length; i++) {
+    MinMax.push({
+      minPizza: splitMinPizza[i],
+      maxPizza: splitMaxPizza[i],
+      minDelivery: splitMinDelivery[i],
+      maxDelivery: splitMaxDelivery[i]
+    });
+  }
+
+  console.log(Hours);
+  console.log(MinMax);
+
+  var newStore = new Store(inputLocationName, Hours, MinMax);
+  console.log(newStore);
+
+  var Row = document.createElement('div');
+  Row.setAttribute('class', 'row');
+
+  var Column = document.createElement('div');
+  Column.setAttribute('class', 'store-hours six columns');
+
+  elHome.appendChild(Row);
+  Row.appendChild(Column);
+
+  // var storeHoursLength = document.getElementsByClassName('store-hours');
+  // console.log(storeHoursLength);
+  createLocationTable(newStore,Column);
+
+});
+
+
+
 });
