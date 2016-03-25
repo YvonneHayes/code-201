@@ -25,28 +25,44 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 nav {
-  background-color: #d1d1d1;
   margin-bottom: 20px;
   text-align: center;
 }
 
 nav ul {
   margin: 0;
+  display: block;
+  background-color: #000;
+}
+
+nav ul ul {
+  background-color: #999;
+  display: none;
 }
 
 nav li {
-  display: inline-block;
-  margin: 10px 20px;
+  display: inline;
+  font-size: 16px;
+}
+
+nav > ul > li:nth-child(2):hover ul {
+  display: block;
 }
 
 nav a {
+  display: inline-block;
   color: #fff;
   text-decoration: none;
   padding: 10px 20px;
 }
 
 nav a:hover {
-  color: #000;
+  color: #fff;
+  text-decoration: underline;
+}
+
+th {
+  background-color: #ddd;
 }
 
 td:first-child,
@@ -57,7 +73,6 @@ th:first-child {
 .bg-image {
   height: 400px;
   background-attachment: fixed;
-  background-position: center bottom;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -67,16 +82,23 @@ th:first-child {
 
 .bg-image--01 {
   background-image: url(../images/pizza-01.jpg);
+  background-position: center bottom;
 }
 
 .bg-image--02 {
   background-image: url(../images/pizza-02.jpg);
+  background-position: center bottom;
 }
 
-.content {
+.content,
+.location {
   display: none;
 }
 
 .show {
   display: block;
+}
+
+.list--unstyled {
+  list-style: none;
 }
