@@ -14,25 +14,64 @@
         <h1>Pizza 3001</h1>
       </div>
       <nav id="nav-site">
-        <div class="container">
-          <ul>
-            <li>
-              <a href="#home">Home</a>
-            </li>
-            <li>
-              <a href="#sales-data">Sales Data</a>
-            </li>
-          </ul>
-        </div>
+        <ul>
+          <li>
+            <a href="#home" data-target=".content--home">Home</a>
+          </li>
+          <li>
+            <a href="#sales-data" data-target=".content--sales-data">Sales Data</a>
+            <ul class="list--unstyled">
+              <li>
+                <a href="#beaverton" data-target=".location--beaverton">Beaverton</a>
+              </li>
+              <li>
+                <a href="#hillsboro" data-target=".location--hillsboro">Hillsboro</a>
+              </li>
+              <li>
+                <a href="#downtown" data-target=".location--downtown">Downtown</a>
+              </li>
+              <li>
+                <a href="#north-east" data-target=".location--north-east">North East</a>
+              </li>
+              <li>
+                <a href="#clackamas" data-target=".location--clackamas">Clackamas</a>
+              </li>
+              <li>
+                <a href="#pdx-airport" data-target=".location--pdx-airport">PDX Airport</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </nav>
       </div>
     </header>
     <main>
       <div class="container">
-        <div class="content content--home show" id="home"></div>
-        <div class="content content--sales-data" id="sales-data"></div>
+        <div class="content content--home show" id="content-home">
+          <div class="row">
+            <div class="store-hours six columns"></div>
+            <div class="store-hours six columns"></div>
+          </div>
+          <div class="row">
+            <div class="store-hours six columns"></div>
+            <div class="store-hours six columns"></div>
+          </div>
+          <div class="row">
+            <div class="store-hours six columns"></div>
+            <div class="store-hours six columns"></div>
+          </div>
+        </div>
+        <div class="content content--sales-data">
+          <div class="row">
+            <div class="tweleve columns" id="content-sales-data">
+              <div class="location location--all"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
+    <script src="scripts/data.js"></script>
+    <script src="scripts/functions.js"></script>
     <script src="scripts/app.js"></script>
   </body>
 </html>
