@@ -1,4 +1,4 @@
-var textTitle = 'Pizza 3001';
+var textTitle = 'Pizza 3001'; // Title for home page
 
 var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
