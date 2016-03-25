@@ -275,16 +275,16 @@ Button.addEventListener('click', function(){
 
   for (var i = 0; i < splitTimeStart.length; i++) {
     Hours.push({
-      timeStart: splitTimeStart[i],
-      timeEnd: splitTimeEnd[i]
+      timeStart: parseInt(splitTimeStart[i]),
+      timeEnd: parseInt(splitTimeEnd[i])
     });
   }
   for (var i = 0; i < splitMinPizza.length; i++) {
     MinMax.push({
-      minPizza: splitMinPizza[i],
-      maxPizza: splitMaxPizza[i],
-      minDelivery: splitMinDelivery[i],
-      maxDelivery: splitMaxDelivery[i]
+      minPizza: parseInt(splitMinPizza[i]),
+      maxPizza: parseInt(splitMaxPizza[i]),
+      minDelivery: parseInt(splitMinDelivery[i]),
+      maxDelivery: parseInt(splitMaxDelivery[i])
     });
   }
 
